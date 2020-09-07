@@ -39,7 +39,7 @@ Page({
         let tapIndex = res.tapIndex;
         switch (tapIndex){
           case 0:
-            wx.navigateTo({url:'/client/pages/todo_keyresult/todo_keyresult?id='+id})
+            wx.navigateTo({url:'./../todo_keyresult/todo_keyresult?id='+id})
             break;
           case 1:
             this.handleFinishTodo(id,index)
@@ -49,7 +49,6 @@ Page({
               title:'删除',
               content:'是否确认删除todo',
               success:(res)=>{
-                console.log(res)
                 if(res.confirm){
                   this.handleDeleteTodo(id,index)
                 }else{

@@ -64,7 +64,7 @@ const todoController = {
   updata:async(ctx,next) =>{
     let id = ctx.request.body.params.id;
     let status = ctx.request.body.params.status;
-    let completed_time = new Date()
+    let completed_time = status ? new Date() : null;
     await Todo.update(id,{status,completed_time});
     ctx.body={
       code:200,
