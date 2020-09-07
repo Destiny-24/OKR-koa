@@ -1,0 +1,35 @@
+<view class="page-container">
+  <view class="page-content">
+    <view class="objective-item finished">
+      <view class="objective-titel">我想让网站打开速度快一点</view>
+      <view class="objective-created_time">· 创建时间：2020/08/25 16:18:21</view>
+      <view class="objective-created_time">· 完成时间：2020/08/25 16:18:21</view>
+    </view>
+    <view class="keyresult-list" >
+      <view class="keyresult-item finished">
+        <view class="keyresult-info">
+          <view class="keyresult-title">感知上也很快</view>
+          <view class="keyresult-tag">已完成</view>
+        </view>
+        <view class="todos-list">
+          <view class="todo-item ">
+            <view class="todo-title finished">· 添加Loading</view>
+          </view>
+        </view>
+      </view>
+      <view class="keyresult-item">
+        <view class="keyresult-info">
+          <view class="keyresult-title">打开速度快30%</view>
+          <view class="keyresult-tag">点击标记</view>
+        </view>
+        <view class="todos-list">
+          <view class="todo-item ">
+            <view class="todo-title ">· 替换较大的图片库</view>
+            <view class="todo-title ">· JavaScript 优化压缩</view>
+            <view class="todo-title ">· 图片资源压缩和代理</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,26 @@
+.created-btn{
+  height: 40px;
+  line-height: 40px;
+  background: #666;
+  color: #fff;
+  font-size: 18px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+.okr-item{
+  position: relative;
+  background: #f5f5f5;
+  padding: 10px;
+  margin-bottom: 5px;
+  overflow: hidden;
+}
+.okr-title{
+  font-size: 14px;
+  line-height: 20px;
+  color: #333;
+  margin-bottom: 4px;
+}
+.okr-created_time{
+  font-size: 12px;
+  color: #999;
+}

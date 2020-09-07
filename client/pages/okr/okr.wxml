@@ -1,0 +1,9 @@
+<view class="page-container">
+  <navigator class="created-btn" url="/pages/okr_create/okr_create">添加 OKR</navigator>
+  <view class="okr-list">
+    <view class="okr-item">
+      <view class="okr-title">我想让网站打开速度快一点</view>
+      <view class="okr-created_time">· 创建时间：2020/08/25 16:18:21</view>
+    </view>
+  </view>
+</view>
