@@ -5,10 +5,10 @@
       <input type="text" class="form-input" placeholder="请输入你的目标" value="{{ objective }}" bindinput="handleChangeObjective"/>
       <view class="form-ctrl" bindtap="handleAddKeyresult">+</view>
     </view>
-    <view class="form-item">
-      <view class="form-labele">Keyresult 成果 1：</view>
-      <input type="text" class="form-input" placeholder="请输入你的目标" value="{{ objective }}" bindinput="handleChangeKeyresult"/>
-      <view class="form-ctrl" bindtap="handleDeleteKeyresult">-</view>
+    <view class="form-item" wx:for="{{keyresult}}" wx:key="item">
+      <view class="form-labele">Keyresult 成果 {{index +1}}：</view>
+      <input type="text" class="form-input" placeholder="请输入你的目标" value="{{ item.title }}" data-index="{{index}}" bindinput="handleChangeKeyresult"/>
+      <view class="form-ctrl" data-index="{{index}}" bindtap="handleDeleteKeyresult">-</view>
     </view>
   </view>
   <view class="page-footer">

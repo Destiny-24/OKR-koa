@@ -14,7 +14,7 @@ const todoController = {
       if(!title || !user_id){
         return  ctx.body={ message:'缺少code参数' }
       }
-      const todos = await Todo.insert({title,user_id,status,created_time});
+      let todos = await Todo.insert({title,user_id,status,created_time});
       let id = todos[0]
       ctx.body={
         code:200,
