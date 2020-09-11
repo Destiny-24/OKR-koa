@@ -1,4 +1,4 @@
-import Okr from './../../models/okr.js'
+import okr from './../../models/okr.js'
 
 Page({
   data:{
@@ -6,7 +6,7 @@ Page({
   },
   onShow(){
     let token = wx.getStorageSync('token');
-    Okr.index({ status:0,token }).then(res =>{
+    okr.index({ status:0,token }).then(res =>{
       this.setData({objectives:res})
     })
   },
@@ -45,11 +45,19 @@ Page({
     })
   },
   handleChangeObjective({id,status}){
-    Okr.updata({id,status}).then(res =>{
+    okr.updata({id,status}).then(res =>{
       let token = wx.getStorageSync('token');
-      Okr.index({ status:0,token }).then(res =>{
+      okr.index({ status:0,token }).then(res =>{
         this.setData({objectives:res})
       })
+    })
+  },
+  handleDeleteObjective(id,index){
+    let token = wx.getStorageSync('token');
+    okr.delete({id,token}).then(res =>{
+      let objectives = this.data.objectives;
+      objectives.splice(index,1)
+      this.setData({ objectives })
     })
   }
 })
