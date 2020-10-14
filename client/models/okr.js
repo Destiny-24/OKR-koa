@@ -11,9 +11,6 @@ export default {
   updata(params){
     return request({url:API.okr,method:'PUT',data:{params}})
   },
-  delete(params){
-    return request({url:API.okr,method:'DELETE', data:{params}})
-  },
   show(params){
     return request({url:API.okr_edit, data:params})
   }

@@ -5,4 +5,6 @@ export default {
   okr:PREFIX+'/wx/okr',
   okr_edit:PREFIX+'/wx/okr_edit',
   keyresult:PREFIX+'/wx/keyresult',
+  objective:PREFIX+'/wx/objective',
+  todoKeyresult:PREFIX+'/wx/todo/keyresult'
 }

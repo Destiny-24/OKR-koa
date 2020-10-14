@@ -1,5 +1,6 @@
-import okr from './../../models/okr.js';
+import okr from './../../models/okr';
 import keyresult from './../../models/keyresult';
+
 Page({
   data:{
     objective:'',
@@ -13,6 +14,10 @@ Page({
       let keyresults = res.keyresults;
       this.setData({objective,keyresults})
     })
+  },
+  handleChangeObjective(event) {
+    let value = event.detail.value;
+    this.setData({ objective: value })
   },
   handleAddKeyresult(event){
     let keyresults = this.data.keyresults;
@@ -29,7 +34,6 @@ Page({
     })
   },
   handleChangeKeyresult(event){
-    console.log(event)
     let index = event.currentTarget.dataset.index;
     let value = event.detail.value;
     let keyresults = this.data.keyresults;
@@ -37,21 +41,36 @@ Page({
     this.setData({keyresults});
   },
   handleSubmit(event){
-    // let objective = this.data.objective;
-    // let keyresults = this.data.keyresults;
-    // if(!objective || !keyresults.length ){
-    //   wx.showToast({
-    //     title:'缺少目标或成果',
-    //     icon:'none',
-    //     mask:true,
-    //     duration:2000
-    //   })
-    //   return
-    // };
-    // let data = {objective,keyresults};
-    // let token = wx.getStorageSync('token');
-    // okr.updata({data,token}).then(res =>{
-    //   wx.switchTab({url:'../okr/okr'})
-    // })
+    let objective = this.data.objective;
+    let keyresults = this.data.keyresults;
+    let id = this.options.id;
+    if(!objective || !keyresults.length ){
+      wx.showToast({
+        title:'缺少目标或成果',
+        icon:'none',
+        mask:true,
+        duration:2000
+      })
+      return
+    };
+    let tmp = keyresults.every(data => data.title);
+    if(!tmp){
+      wx.showToast({
+        title:'请输入成果',
+        icon:'none',
+        mask:true,
+        duration:2000
+      })
+      return
+    }
+    let data = {title:objective};
+    data.keyresults = keyresults
+    let token = wx.getStorageSync('token');
+    okr.updata({id,data,token}).then(res =>{
+      wx.switchTab({url:'../okr/okr'});
+      wx.showToast({
+        title:'保存成功'
+      });
+    })
   }
 })

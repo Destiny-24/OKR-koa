@@ -1,32 +1,19 @@
 <view class="page-container">
   <view class="page-content">
-    <view class="objective-item finished">
-      <view class="objective-titel">我想让网站打开速度快一点</view>
-      <view class="objective-created_time">· 创建时间：2020/08/25 16:18:21</view>
-      <view class="objective-created_time">· 完成时间：2020/08/25 16:18:21</view>
+    <view class="objective-item {{objective.status ===1 ? 'finished' : ''}}" data-status="{{objective.status}}" data-id="{{objective.id}}" bindtap="handleObjectiveActionSheet">
+      <view class="objective-title">{{objective.title}}</view>
+      <view class="objective-created_time">· 创建时间：{{objective.created_time}}</view>
+      <view class="objective-created_time" wx:if="{{objective.completed_time}}">· 完成时间：{{objective.completed_time}}</view>
     </view>
-    <view class="keyresult-list" >
-      <view class="keyresult-item finished">
+    <view class="keyresult-list" wx:for="{{objective.keyresults}}" wx:key="item" data-id="{{item.id}}">
+      <view class="keyresult-item  {{item.status === 1 ? 'finished' : ''}}" bindtap="handleKeyresultActionSheet" data-index="{{index}}" data-id="{{item.id}}" data-status="{{item.status}}">
         <view class="keyresult-info">
-          <view class="keyresult-title">感知上也很快</view>
-          <view class="keyresult-tag">已完成</view>
+          <view class="keyresult-title">{{item.title}}</view>
+          <view class="keyresult-tag">{{item.status ===1 ? '已完成 ' :'点击标记'}}</view>
         </view>
-        <view class="todos-list">
-          <view class="todo-item ">
-            <view class="todo-title finished">· 添加Loading</view>
-          </view>
-        </view>
-      </view>
-      <view class="keyresult-item">
-        <view class="keyresult-info">
-          <view class="keyresult-title">打开速度快30%</view>
-          <view class="keyresult-tag">点击标记</view>
-        </view>
-        <view class="todos-list">
-          <view class="todo-item ">
-            <view class="todo-title ">· 替换较大的图片库</view>
-            <view class="todo-title ">· JavaScript 优化压缩</view>
-            <view class="todo-title ">· 图片资源压缩和代理</view>
+        <view class="todos-list" wx:if="{{item.todos.length}}">
+          <view class="todo-item " wx:for="{{item.todos}}" wx:key="item" wx:for-item="items">
+            <view class="todo-title {{item.status === 1 ? 'finished' : ''}}">· {{items.title}}</view>
           </view>
         </view>
       </view>

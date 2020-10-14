@@ -1,12 +1,12 @@
-import okr from './../../models/okr.js'
-
+import okr from './../../models/okr.js';
+import objective from './../../models/objective';
 Page({
   data:{
     objectives: []
   },
   onShow(){
     let token = wx.getStorageSync('token');
-    okr.index({ status:0,token }).then(res =>{
+    okr.index({token }).then(res =>{
       this.setData({objectives:res})
     })
   },
@@ -27,7 +27,7 @@ Page({
             wx.navigateTo({url:'../okr_edit/okr_edit?id='+id});
           break;
           case 2:
-            this.handleChangeObjective({id,status});
+            this.handleChangeObjective(id,status);
           break;
           case 3:
             wx.showModal({
@@ -44,8 +44,8 @@ Page({
       }
     })
   },
-  handleChangeObjective({id,status}){
-    okr.updata({id,status}).then(res =>{
+  handleChangeObjective(id,status){
+    objective.update(id,{status:1}).then(res =>{
       let token = wx.getStorageSync('token');
       okr.index({ status:0,token }).then(res =>{
         this.setData({objectives:res})
@@ -54,7 +54,7 @@ Page({
   },
   handleDeleteObjective(id,index){
     let token = wx.getStorageSync('token');
-    okr.delete({id,token}).then(res =>{
+    objective.delete({id,token}).then(res =>{
       let objectives = this.data.objectives;
       objectives.splice(index,1)
       this.setData({ objectives })

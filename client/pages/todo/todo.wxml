@@ -1,5 +1,5 @@
 <view class="page-container">
-  <view class="todo-tips">你必须做你不得不做的事</view>
+  <view class="todo-tips">人生遗愿</view>
   <input type="text" class="todo-input" placeholder="请输入你需要完成的事情" bindinput="handleInput" bindconfirm="handleConfirm" value="{{value}}"/>
   <view class="todo-list">
     <view class="todo-item" bindtap="handleShowActionSheet" wx:for="{{todos}}" wx:key="item" data-index="{{index}}" data-id="{{item.id}}">
